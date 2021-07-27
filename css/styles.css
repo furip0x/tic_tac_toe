@@ -1,0 +1,158 @@
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: hsla(40, 2%, 25%, 1);
+  background: url("../img/wood-texture.jpg") 50% 50%;
+  background-size: cover;
+  margin: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1200px;
+  min-height: 100vh;
+  padding: 30px 0;
+  margin: 0 auto;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* GAME CONTENT */
+
+.game-content {
+  position: relative;
+}
+
+/* NOTEBOOK */
+
+.notebook {
+  position: relative;
+}
+
+.notebook__img {
+  max-width: 100%;
+}
+
+.notebook__title {
+  position: absolute;
+  top: 33px;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 50px;
+  text-align: center;
+}
+
+/* WELCOME SECTION */
+
+.welcome-section {
+  position: absolute;
+  top: 114px;
+  left: 185px;
+  z-index: 3;
+  width: 400px;
+  height: 400px;
+}
+
+.choose-player {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.choose-player__btn,
+.restart-btn {
+  color: #41403E;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 18px;
+  letter-spacing: 1px;
+  transition: all 0.5s ease;
+  background: transparent;
+  box-shadow: 20px 38px 34px -26px rgb(0 0 0 / 20%);
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  border: 7px solid  hsla(40, 2%, 25%, 1);
+  outline: none;
+  padding: 16px 16px;
+  margin: 0 16px;
+}
+
+.choose-player__btn:hover {
+  color: #fff;
+  background-color: #41403E;
+}
+
+.choose-player__btn span {
+  font-size: 28px;
+  line-height: 18px;
+}
+
+/* RESTART BTN */
+
+.restart-btn {
+  position: absolute;
+  right: 50px;
+  bottom: 100px;
+  color: #41403e;
+  font-size: 20px;
+  letter-spacing: normal;
+  border: none;
+  padding: 10px 16px;
+  margin: 0;
+  z-index: 3;
+}
+
+/* GRID */
+
+#grid {
+  position: absolute;
+  left: 185px;
+  top: 114px;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  width: 400px;
+  height: 400px;
+  transform: skew(2deg,1deg);
+  transition: opacity 0.2s;
+}
+
+.grid__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: hsla(40, 2%, 25%, 1);
+  font-family: 'Permanent Marker', cursive;
+  font-size: 90px;
+  border: 1px solid hsla(225, 12%, 41%, 1);
+  cursor: url("../img/pencil_cursor.png"), default;
+}
+
+.grid__item:nth-child(-n+3) {
+  border-top: none;
+}
+
+.grid__item:nth-child(n+7) {
+  border-bottom: none;
+}
+
+.grid__item:first-child,
+.grid__item:nth-child(4),
+.grid__item:nth-child(7) {
+  border-left: none;
+}
+
+.grid__item:nth-child(3),
+.grid__item:nth-child(6),
+.grid__item:nth-child(9) {
+  border-right: none;
+}
