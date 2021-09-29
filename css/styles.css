@@ -1,5 +1,5 @@
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   line-height: 1.4;
   color: hsla(40, 2%, 25%, 1);
@@ -46,7 +46,7 @@ body {
   left: 0;
   right: 0;
   z-index: 1;
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   font-size: 50px;
   text-align: center;
 }
@@ -71,23 +71,24 @@ body {
 
 .choose-player__btn,
 .restart-btn {
-  color: #41403E;
-  font-family: 'Permanent Marker', cursive;
+  color: #41403e;
+  font-family: "Permanent Marker", cursive;
   font-size: 18px;
   letter-spacing: 1px;
   transition: all 0.5s ease;
   background: transparent;
   box-shadow: 20px 38px 34px -26px rgb(0 0 0 / 20%);
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  border: 7px solid  hsla(40, 2%, 25%, 1);
+  border: 7px solid hsla(40, 2%, 25%, 1);
   outline: none;
   padding: 16px 16px;
   margin: 0 16px;
 }
 
-.choose-player__btn:hover {
+.choose-player__btn:hover,
+.restart-btn:hover {
   color: #fff;
-  background-color: #41403E;
+  background-color: #41403e;
 }
 
 .choose-player__btn span {
@@ -95,16 +96,27 @@ body {
   line-height: 18px;
 }
 
-/* RESTART BTN */
+/* WINNER SECTION */
+
+.winner-section {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.winner-section__title {
+  font-family: "Permanent Marker", cursive;
+  font-size: 50px;
+  margin: 0 0 20px;
+}
 
 .restart-btn {
-  position: absolute;
-  right: 50px;
-  bottom: 100px;
   color: #41403e;
-  font-size: 20px;
+  font-size: 25px;
   letter-spacing: normal;
-  border: none;
   padding: 10px 16px;
   margin: 0;
   z-index: 3;
@@ -122,7 +134,7 @@ body {
   grid-template-rows: repeat(3, 1fr);
   width: 400px;
   height: 400px;
-  transform: skew(2deg,1deg);
+  transform: skew(2deg, 1deg);
   transition: opacity 0.2s;
 }
 
@@ -131,17 +143,17 @@ body {
   align-items: center;
   justify-content: center;
   color: hsla(40, 2%, 25%, 1);
-  font-family: 'Permanent Marker', cursive;
+  font-family: "Permanent Marker", cursive;
   font-size: 90px;
   border: 1px solid hsla(225, 12%, 41%, 1);
   cursor: url("../img/pencil_cursor.png"), default;
 }
 
-.grid__item:nth-child(-n+3) {
+.grid__item:nth-child(-n + 3) {
   border-top: none;
 }
 
-.grid__item:nth-child(n+7) {
+.grid__item:nth-child(n + 7) {
   border-bottom: none;
 }
 

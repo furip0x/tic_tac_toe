@@ -1,51 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TIC TAC TOE</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TIC TAC TOE</title>
-  <link rel="icon" href="favicon.png" type="image/png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-  <main>
-    <div class="container">
-      <div class="game-content">
-        <div class="notebook">
-          <div class="notebook__title">Tic Tac Toe</div>
-          <img class="notebook__img" src="img/notebook.png" alt="Notebook">
-        </div>
-        <div class="welcome-section" id="welcome-section">
-          <div class="choose-player">
-            <button type="button" class="choose-player__btn">
-              Player <span>vs</span> Player
-            </button>
+  <body>
+    <main>
+      <div class="container">
+        <div class="game-content">
+          <div class="notebook">
+            <div class="notebook__title">Tic Tac Toe</div>
+            <img class="notebook__img" src="img/notebook.png" alt="Notebook" />
+          </div>
+          <div class="welcome-section" id="welcome-section">
+            <div class="choose-player">
+              <button type="button" class="choose-player__btn">
+                Player <span>vs</span> Player
+              </button>
+            </div>
+          </div>
+          <div id="grid" class="hidden">
+            <div class="grid__item" id="0"></div>
+            <div class="grid__item" id="1"></div>
+            <div class="grid__item" id="2"></div>
+            <div class="grid__item" id="3"></div>
+            <div class="grid__item" id="4"></div>
+            <div class="grid__item" id="5"></div>
+            <div class="grid__item" id="6"></div>
+            <div class="grid__item" id="7"></div>
+            <div class="grid__item" id="8"></div>
+          </div>
+          <div class="winner-section hidden">
+            <h2 class="winner-section__title"></h2>
+            <button class="restart-btn">Restart</button>
           </div>
         </div>
-        <button class="restart-btn hidden" onclick="location.reload()">Restart</button>
-        <div id="grid" class="hidden">
-          <div class="grid__item" id="0"></div>
-          <div class="grid__item" id="1"></div>
-          <div class="grid__item" id="2"></div>
-          <div class="grid__item" id="3"></div>
-          <div class="grid__item" id="4"></div>
-          <div class="grid__item" id="5"></div>
-          <div class="grid__item" id="6"></div>
-          <div class="grid__item" id="7"></div>
-          <div class="grid__item" id="8"></div>
-        </div>
       </div>
-    </div>
-  </main>
-</body>
-<script src="js/scripts.js"></script>
-
+    </main>
+  </body>
+  <script src="js/scripts.js"></script>
 </html>

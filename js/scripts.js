@@ -1,74 +1,95 @@
 const welcomeSection = document.getElementById('welcome-section')
+const winnerSection = document.querySelector('.winner-section')
+const winnerSectionTitle = document.querySelector('.winner-section__title')
 const choosePlayerBtn = document.querySelector('.choose-player__btn')
+// const player1Input = document.getElementById('player1-name')
+// const player2Input = document.getElementById('player2-name')
 const restartBtn = document.querySelector('.restart-btn')
 const grid = document.getElementById('grid')
 const gridItems = grid.querySelectorAll('.grid__item')
 
-const startGame = (() => {
-  const welcomeSection = document.getElementById('welcome-section')
-  const choosePlayerBtn = document.querySelector('.choose-player__btn')
-  const grid = document.getElementById('grid')
-  const gridItems = grid.querySelectorAll('.grid__item')
+let mark = 'X'
+const winCombos = [
+  [0, 1, 2],
+  [0, 3, 6],
+  [3, 4, 5],
+  [6, 7, 8],
+  [1, 4, 7],
+  [2, 4, 6],
+  [2, 5, 8],
+  [0, 4, 8]
+]
+// const board = [
+//   ['','',''],
+//   ['','',''],
+//   ['','','']
+// ]
 
-  const gameBoard = new Array(9)
+choosePlayerBtn.addEventListener('click', function(){
+  welcomeSection.classList.add('hidden')
+  grid.classList.remove('hidden')
+  startGame();
+})
 
-  choosePlayerBtn.addEventListener('click', () => {
-    welcomeSection.classList.add('hidden')
-    grid.classList.remove('hidden')
-  })
+// const getColRowFromIndex = (arrLength, number) => {
+//   const row = number / arrLength
+//   const col = number % arrLength
+//   return {row, col}
+// }
 
-  // Creates players
-  const player = (name, mark, turn) => {
-    return {
-      name,
-      mark,
-      turn
-    }
-  }
-
-  const player1 = player('player 1', 'X', true)
-  const player2 = player('Player 2', 'O', false)
-
-  const winCombos = [
-    [0, 1, 2],
-    [0, 3, 6],
-    [3, 4, 5],
-    [6, 7, 8],
-    [1, 4, 7],
-    [2, 4, 6],
-    [2, 5, 8],
-    [0, 4, 8]
-  ]
-
-  const winner = null
-  const turns = 0
-  const board = []
-  const winnerCombo = []
-
-  const playerTurn = (() => {
-    gridItems.forEach(grid => {
-      grid.addEventListener('click', (e) => {
-        if (player1.turn === true && grid.textContent === '') {
-          board[e.target.id] = player1.mark
-          grid.textContent = player1.mark
-          grid.style.color = '#f1cd78'
-          player1.turn = false
-          player2.turn = true
-          if (gameEnd()) restartBtn.classList.remove('hidden')
-        } else if (player2.turn === true & grid.textContent === '') {
-          board[e.target.id] = player2.mark
-          grid.textContent = player2.mark
-          grid.style.color = '#b82058'
-          player2.turn = false
-          player1.turn = true
-          if (gameEnd()) restartBtn.classList.remove('hidden')
+const startGame = () => {
+  grid.addEventListener('click', function(e){
+    let targetItem = e.target
+    if(targetItem.textContent === '') {
+      if(mark === 'X') {
+        targetItem.textContent = 'X'
+        targetItem.style.color = '#f1cd78'
+        if(checkWin(mark)) {
+          showResults(mark)
         }
-      })
-    })
-  })()
+        mark = 'O'
+      } else if(mark === 'O') {
+        targetItem.textContent = 'O'
+        targetItem.style.color = '#b82058'
+        if(checkWin(mark)) {
+          showResults(mark)
+        }
+        mark = 'X'
+      }
+    }
+    // const {row, col} = getColRowFromIndex(board.length, targetItem.id)
+    //   board[row][col] = targetItem.textContent
+    //   for (let i = 0; i < winCombos.length; i++) {
+    //     for (let j = 0; j < winCombos.length; j++) {
+    //       //  if(board[0][8] === winCombos[i][j]) {
+    //       //    grid.classList.add('hidden')
+    //       //  }
+    //     }
+    //   }
+  })
+}
 
-  const gameEnd = () => {
-    const gridItemsArray = Array.from(gridItems);
-    return gridItemsArray.every(elem => elem.textContent !== '')
-  }
-})()
+const checkWin = (currentMark) => {
+  return winCombos.some(combination => {
+    return combination.every(index => {
+      return gridItems[index].textContent.includes(currentMark)
+    })
+  })
+}
+
+const showResults = (winnerMark) => {
+  welcomeSection.classList.add('hidden')
+  grid.classList.add('hidden')
+  winnerSection.classList.remove('hidden')
+  winnerSectionTitle.textContent = `${winnerMark} Wins!`
+}
+
+restartBtn.addEventListener('click', function() {
+  welcomeSection.classList.remove('hidden')
+  grid.classList.add('hidden')
+  winnerSection.classList.add('hidden')
+  winnerSectionTitle.textContent = ''
+  gridItems.forEach(item => {
+    item.textContent = ''
+  })
+})
